@@ -24,5 +24,5 @@ public abstract class BinaryExpression implements Expression {
         return operate(v1, v2);
     }
 
-    public abstract Value operate(Value v1, Value v2);
+    protected abstract Value operate(Value v1, Value v2);
 }

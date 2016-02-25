@@ -6,4 +6,5 @@ package knowledge;
  */
 public interface KnowledgeEngine {
     Value getNamedValue(String name);
+    void insertNamedValue(String name, Value v);
 }
