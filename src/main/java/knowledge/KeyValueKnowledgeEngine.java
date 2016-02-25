@@ -1,5 +1,7 @@
 package knowledge;
 
+import expression.NamedValue;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,8 +16,9 @@ public class KeyValueKnowledgeEngine implements KnowledgeEngine {
         values = new HashMap<>();
     }
 
-    public void insertNamedValue(String name, Value value){
+    public NamedValue insertNamedValue(String name, Value value){
         values.put(name, value);
+        return NamedValue.of(name);
     }
 
     public Value getNamedValue(String name) {
