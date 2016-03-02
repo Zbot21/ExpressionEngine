@@ -1,5 +1,6 @@
 package expression;
 
+import expression.intf.Expression;
 import knowledge.KnowledgeEngine;
 import knowledge.Value;
 
@@ -7,7 +8,7 @@ import knowledge.Value;
  * An expression with a name, the value can be determined from the KnowledgeEngine
  * Created by chris on 2/24/16.
  */
-public class NamedValue implements Expression{
+public class NamedValue implements Expression {
     private String name;
 
     /**

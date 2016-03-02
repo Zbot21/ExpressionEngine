@@ -1,4 +1,4 @@
-package expression;
+package expression.intf;
 
 import knowledge.KnowledgeEngine;
 import knowledge.Value;

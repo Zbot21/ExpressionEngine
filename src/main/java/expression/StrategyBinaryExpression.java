@@ -1,5 +1,6 @@
 package expression;
 
+import expression.intf.Expression;
 import knowledge.Value;
 
 /**
