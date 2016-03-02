@@ -8,6 +8,7 @@ import expression.intf.TraversableExpression;
 import java.util.List;
 
 /**
+ * Strategy implemented Traversable Binary Expression.
  * Created by chris on 3/2/16.
  */
 public class StrategyTraversableBinaryExpression extends StrategyBinaryExpression implements TraversableExpression {
@@ -16,9 +17,10 @@ public class StrategyTraversableBinaryExpression extends StrategyBinaryExpressio
     /**
      * Constructs a Binary Expression with two Expressions and a strategy.
      *
-     * @param e1       - Expression
-     * @param e2       - Expression
-     * @param strategy - Strategy for combining values.
+     * @param e1        - Expression
+     * @param e2        - Expression
+     * @param strategy  - Strategy for combining values.
+     * @param tStrategy - Strategy for allowing for traversal of the expression, returning more expressions.
      */
     public StrategyTraversableBinaryExpression(Expression e1, Expression e2, BinaryExpressionStrategy strategy, TraversableExpressionStrategy tStrategy) {
         super(e1, e2, strategy);
