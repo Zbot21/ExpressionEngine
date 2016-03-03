@@ -12,4 +12,15 @@ public class LogicUtilites {
         }
         return expressions;
     }
+
+    /**
+     * Created by chris on 3/2/16.
+     */
+    public static class TraversalProperties {
+
+        public static final String NORMAL = "NORMAL";
+        public static final String NEGATE = "NEGATE";
+
+        private TraversalProperties(){}
+    }
 }

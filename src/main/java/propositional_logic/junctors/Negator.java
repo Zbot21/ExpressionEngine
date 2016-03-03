@@ -6,8 +6,8 @@ import expression.strategy_impl.UnaryExpressionStrategy;
 import expression.traversable_expressions.TraversableExpressionStrategy;
 import knowledge.Value;
 import propositional_logic.LogicUtilites;
-import propositional_logic.TraversalProperties;
-import propositional_logic.UnaryPropositionalExpression;
+import propositional_logic.expressions.UnaryPropositionalExpression;
+import propositional_logic.intf.PropositionalExpressionStrategy;
 
 /**
  * Created by chris on 3/2/16.
@@ -17,15 +17,17 @@ public class Negator extends UnaryPropositionalExpression {
 
     public static TraversableExpressionStrategy TRAVERSAL_STRAT = (name, expressionsPresent) -> {
         switch (name){
-            case TraversalProperties.NORMAL:
+            case LogicUtilites.TraversalProperties.NORMAL:
                 return new TraversableExpression.ExpressionGroup(TraversableExpression.ExpressionGroup.ExpressionGroupType.SIMULTANEOUS, expressionsPresent);
-            case TraversalProperties.NEGATE:
+            case LogicUtilites.TraversalProperties.NEGATE:
                 return new TraversableExpression.ExpressionGroup(TraversableExpression.ExpressionGroup.ExpressionGroupType.SIMULTANEOUS, LogicUtilites.negateExpressions(expressionsPresent));
         }
         return TraversableExpression.ExpressionGroup.EMPTY_GROUP;
     };
 
+    public static PropositionalExpressionStrategy PROP_EXPR_STRAT = () -> ExpressionType.Negator;
+
     public Negator(Expression e1) {
-        super(e1, UNARY_EXPR_STRAT, TRAVERSAL_STRAT);
+        super(e1, UNARY_EXPR_STRAT, TRAVERSAL_STRAT, PROP_EXPR_STRAT);
     }
 }

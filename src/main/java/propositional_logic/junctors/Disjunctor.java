@@ -5,9 +5,9 @@ import expression.intf.TraversableExpression;
 import expression.strategy_impl.BinaryExpressionStrategy;
 import expression.traversable_expressions.TraversableExpressionStrategy;
 import knowledge.Value;
-import propositional_logic.BinaryPropositionalExpression;
+import propositional_logic.expressions.BinaryPropositionalExpression;
 import propositional_logic.LogicUtilites;
-import propositional_logic.TraversalProperties;
+import propositional_logic.intf.PropositionalExpressionStrategy;
 
 /**
  * Created by chris on 3/2/16.
@@ -22,13 +22,15 @@ public class Disjunctor extends BinaryPropositionalExpression {
 
     public static TraversableExpressionStrategy TRAVERSAL_STRAT = (name, expressionsPresent) -> {
         switch (name){
-            case TraversalProperties.NORMAL:
+            case LogicUtilites.TraversalProperties.NORMAL:
                 return new TraversableExpression.ExpressionGroup(TraversableExpression.ExpressionGroup.ExpressionGroupType.SEPERATELY, expressionsPresent);
-            case TraversalProperties.NEGATE:
+            case LogicUtilites.TraversalProperties.NEGATE:
                 return new TraversableExpression.ExpressionGroup(TraversableExpression.ExpressionGroup.ExpressionGroupType.SIMULTANEOUS, LogicUtilites.negateExpressions(expressionsPresent));
         }
         return TraversableExpression.ExpressionGroup.EMPTY_GROUP;
     };
+
+    public static PropositionalExpressionStrategy PROP_EXPR_STRAT = () -> ExpressionType.Disjunctor;
 
     /**
      * Constructs a Binary Expression with two Expressions and a strategy.
@@ -37,6 +39,6 @@ public class Disjunctor extends BinaryPropositionalExpression {
      * @param e2        - Expression
      */
     public Disjunctor(Expression e1, Expression e2) {
-        super(e1, e2, BINARY_EXPR_STRAT, TRAVERSAL_STRAT);
+        super(e1, e2, BINARY_EXPR_STRAT, TRAVERSAL_STRAT, PROP_EXPR_STRAT);
     }
 }
