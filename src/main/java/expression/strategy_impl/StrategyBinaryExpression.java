@@ -1,5 +1,6 @@
-package expression;
+package expression.strategy_impl;
 
+import expression.abstract_impl.BinaryExpression;
 import expression.intf.Expression;
 import knowledge.Value;
 
@@ -8,7 +9,7 @@ import knowledge.Value;
  * You can arbitrarily determine what kind of binary expression you have, based on a strategy.
  * Created by chris on 2/24/16.
  */
-public class StrategyBinaryExpression extends BinaryExpression{
+public class StrategyBinaryExpression extends BinaryExpression {
     private BinaryExpressionStrategy strat;
 
     /**

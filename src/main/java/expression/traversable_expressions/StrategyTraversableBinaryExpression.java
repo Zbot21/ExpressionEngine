@@ -1,11 +1,9 @@
 package expression.traversable_expressions;
 
-import expression.BinaryExpressionStrategy;
-import expression.StrategyBinaryExpression;
+import expression.strategy_impl.BinaryExpressionStrategy;
+import expression.strategy_impl.StrategyBinaryExpression;
 import expression.intf.Expression;
 import expression.intf.TraversableExpression;
-
-import java.util.List;
 
 /**
  * Strategy implemented Traversable Binary Expression.
@@ -28,9 +26,7 @@ public class StrategyTraversableBinaryExpression extends StrategyBinaryExpressio
     }
 
     @Override
-    public List<Expression> getSubExpressions(String name) {
+    public ExpressionGroup getSubExpressions(String name) {
         return tStrategy.getSubExpressions(name, expr1, expr2);
     }
-
-    // TODO: Add a TRAVERSE method here, figure out what it should have as its root, or we create a traverser
 }

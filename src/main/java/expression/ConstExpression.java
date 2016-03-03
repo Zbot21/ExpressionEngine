@@ -19,6 +19,10 @@ public class ConstExpression implements Expression {
         myValue = val;
     }
 
+    public static <T> ConstExpression of(T value){
+        return new ConstExpression(Value.of(value));
+    }
+
     public Value getValue(KnowledgeEngine e) {
         return myValue;
     }

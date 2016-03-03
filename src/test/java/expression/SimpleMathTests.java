@@ -1,5 +1,6 @@
 package expression;
 
+import expression.strategy_impl.StrategyBinaryExpression;
 import knowledge.KeyValueKnowledgeEngine;
 import knowledge.KnowledgeEngine;
 import knowledge.Value;

@@ -1,4 +1,4 @@
-package expression;
+package expression.abstract_impl;
 
 import expression.intf.Expression;
 import knowledge.KnowledgeEngine;
