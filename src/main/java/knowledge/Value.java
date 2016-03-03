@@ -35,4 +35,9 @@ public class Value<T> {
     public boolean equals(Object o) {
         return o instanceof Value && (((Value) o).myValue).equals(myValue);
     }
+
+    @Override
+    public String toString(){
+        return "Value: " + myValue.toString() + "\n";
+    }
 }

@@ -31,4 +31,6 @@ public class StrategyTraversableBinaryExpression extends StrategyBinaryExpressio
     public List<Expression> getSubExpressions(String name) {
         return tStrategy.getSubExpressions(name, expr1, expr2);
     }
+
+    // TODO: Add a TRAVERSE method here, figure out what it should have as its root, or we create a traverser
 }

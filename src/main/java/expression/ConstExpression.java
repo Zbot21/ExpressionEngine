@@ -22,4 +22,12 @@ public class ConstExpression implements Expression {
     public Value getValue(KnowledgeEngine e) {
         return myValue;
     }
+
+    @Override
+    public String toString(){
+        String temp = "";
+        temp += "Type: " + getClass().getName() + "\n";
+        temp += "Value: " + myValue.getValue().toString() + "\n";
+        return temp;
+    }
 }

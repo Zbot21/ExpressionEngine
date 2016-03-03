@@ -20,4 +20,11 @@ public abstract class UnaryExpression implements Expression {
     }
 
     protected abstract Value operate(Value v1);
+
+    public String toString(){
+        String temp = "";
+        temp += "Type: " + getClass().getName() + "\n";
+        temp += "Expression: " + getClass().getName() + "\n";
+        return temp;
+    }
 }

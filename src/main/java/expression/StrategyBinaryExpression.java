@@ -26,4 +26,10 @@ public class StrategyBinaryExpression extends BinaryExpression{
     public Value operate(Value v1, Value v2) {
         return strat.operate(v1, v2);
     }
+
+    public String toString(){
+        String temp = super.toString();
+        temp += "Strategy: " + strat.getClass().getName() + "\n";
+        return temp;
+    }
 } 

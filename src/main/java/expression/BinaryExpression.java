@@ -26,4 +26,12 @@ public abstract class BinaryExpression implements Expression {
     }
 
     protected abstract Value operate(Value v1, Value v2);
+
+    public String toString(){
+        String temp = "";
+        temp += "Type: " + getClass().getName() + "\n";
+        temp += "Expression1: " + expr1.getClass().getName() + "\n";
+        temp += "Expression2: " + expr2.getClass().getName() + "\n";
+        return temp;
+    }
 }
