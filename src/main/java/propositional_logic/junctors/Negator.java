@@ -8,7 +8,6 @@ import knowledge.Value;
 import propositional_logic.LogicUtilites;
 import propositional_logic.TraversalProperties;
 import propositional_logic.UnaryPropositionalExpression;
-import propositional_logic.strategies.LogicStrategies;
 
 /**
  * Created by chris on 3/2/16.
