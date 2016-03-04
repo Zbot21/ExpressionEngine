@@ -1,6 +1,9 @@
 package propositional_logic;
 
 import expression.intf.Expression;
+import expression.intf.TraversableExpression;
+import propositional_logic.junctors.Negator;
+import sun.misc.RegexpPool;
 
 /**
  * Created by chris on 3/2/16.
@@ -11,6 +14,16 @@ public class LogicUtilites {
             expressions[i] = new propositional_logic.junctors.Negator(expressions[i]);
         }
         return expressions;
+    }
+
+    public static TraversableExpression.ExpressionGroup basicNegatedWrapper(String name, Expression e){
+        switch(name){
+            case LogicUtilites.TraversalProperties.NORMAL:
+                return TraversableExpression.ExpressionGroup.simultaneousOf(e);
+            case LogicUtilites.TraversalProperties.NEGATE:
+                return TraversableExpression.ExpressionGroup.simultaneousOf(Negator.of(e));
+        }
+        return TraversableExpression.ExpressionGroup.EMPTY_GROUP;
     }
 
     /**

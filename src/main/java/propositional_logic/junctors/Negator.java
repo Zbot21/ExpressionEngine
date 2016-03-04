@@ -18,9 +18,9 @@ public class Negator extends UnaryPropositionalExpression {
     public static TraversableExpressionStrategy TRAVERSAL_STRAT = (name, expressionsPresent) -> {
         switch (name){
             case LogicUtilites.TraversalProperties.NORMAL:
-                return new TraversableExpression.ExpressionGroup(TraversableExpression.ExpressionGroup.ExpressionGroupType.SIMULTANEOUS, expressionsPresent);
+                return TraversableExpression.ExpressionGroup.simultaneousOf(expressionsPresent);
             case LogicUtilites.TraversalProperties.NEGATE:
-                return new TraversableExpression.ExpressionGroup(TraversableExpression.ExpressionGroup.ExpressionGroupType.SIMULTANEOUS, LogicUtilites.negateExpressions(expressionsPresent));
+                return TraversableExpression.ExpressionGroup.simultaneousOf(LogicUtilites.negateExpressions(expressionsPresent));
         }
         return TraversableExpression.ExpressionGroup.EMPTY_GROUP;
     };
@@ -29,5 +29,9 @@ public class Negator extends UnaryPropositionalExpression {
 
     public Negator(Expression e1) {
         super(e1, UNARY_EXPR_STRAT, TRAVERSAL_STRAT, PROP_EXPR_STRAT);
+    }
+
+    public static Negator of(Expression e){
+        return new Negator(e);
     }
 }

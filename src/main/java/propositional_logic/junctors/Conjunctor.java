@@ -24,10 +24,10 @@ public class Conjunctor extends BinaryPropositionalExpression {
     public static TraversableExpressionStrategy TRAVERSAL_STRAT = (name, expressionsPresent) -> {
         switch(name){
             case LogicUtilites.TraversalProperties.NORMAL:
-                return new TraversableExpression.ExpressionGroup(TraversableExpression.ExpressionGroup.ExpressionGroupType.SIMULTANEOUS, expressionsPresent);
+                return TraversableExpression.ExpressionGroup.simultaneousOf(expressionsPresent);
             case LogicUtilites.TraversalProperties.NEGATE:
                 // need the negator
-                return new TraversableExpression.ExpressionGroup(TraversableExpression.ExpressionGroup.ExpressionGroupType.SEPERATELY, LogicUtilites.negateExpressions(expressionsPresent));
+                return TraversableExpression.ExpressionGroup.seperateOf(LogicUtilites.negateExpressions(expressionsPresent));
         }
         return TraversableExpression.ExpressionGroup.EMPTY_GROUP;
     };
@@ -42,5 +42,20 @@ public class Conjunctor extends BinaryPropositionalExpression {
      */
     public Conjunctor(Expression e1, Expression e2) {
         super(e1, e2, BINARY_EXPR_STRAT, TRAVERSAL_STRAT, PROP_EXPR_STRAT);
+    }
+
+    public static Conjunctor of(Expression e1, Expression e2){
+        return new Conjunctor(e1, e2);
+    }
+
+    public static Conjunctor of(Expression... expressions){
+        if(expressions.length < 2)
+            throw new IllegalArgumentException("Must have two expressions!");
+
+        Conjunctor c = Conjunctor.of(expressions[0], expressions[1]);
+        for(int i = 2; i < expressions.length; i++){
+            c = Conjunctor.of(c, expressions[i]);
+        }
+        return c;
     }
 }

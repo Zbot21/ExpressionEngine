@@ -31,5 +31,13 @@ public interface TraversableExpression extends Expression {
         public enum ExpressionGroupType { SIMULTANEOUS, SEPERATELY, EMPTY }
 
         public static final ExpressionGroup EMPTY_GROUP = new ExpressionGroup(ExpressionGroupType.EMPTY);
+
+        public static ExpressionGroup simultaneousOf(Expression... expressions){
+            return new ExpressionGroup(ExpressionGroupType.SIMULTANEOUS, expressions);
+        }
+
+        public static ExpressionGroup seperateOf(Expression... expressions){
+            return new ExpressionGroup(ExpressionGroupType.SEPERATELY, expressions);
+        }
     }
 }

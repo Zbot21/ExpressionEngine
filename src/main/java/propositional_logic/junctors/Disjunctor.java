@@ -23,9 +23,9 @@ public class Disjunctor extends BinaryPropositionalExpression {
     public static TraversableExpressionStrategy TRAVERSAL_STRAT = (name, expressionsPresent) -> {
         switch (name){
             case LogicUtilites.TraversalProperties.NORMAL:
-                return new TraversableExpression.ExpressionGroup(TraversableExpression.ExpressionGroup.ExpressionGroupType.SEPERATELY, expressionsPresent);
+                return TraversableExpression.ExpressionGroup.seperateOf(expressionsPresent);
             case LogicUtilites.TraversalProperties.NEGATE:
-                return new TraversableExpression.ExpressionGroup(TraversableExpression.ExpressionGroup.ExpressionGroupType.SIMULTANEOUS, LogicUtilites.negateExpressions(expressionsPresent));
+                return TraversableExpression.ExpressionGroup.simultaneousOf(LogicUtilites.negateExpressions(expressionsPresent));
         }
         return TraversableExpression.ExpressionGroup.EMPTY_GROUP;
     };
@@ -40,5 +40,9 @@ public class Disjunctor extends BinaryPropositionalExpression {
      */
     public Disjunctor(Expression e1, Expression e2) {
         super(e1, e2, BINARY_EXPR_STRAT, TRAVERSAL_STRAT, PROP_EXPR_STRAT);
+    }
+
+    public static Disjunctor of(Expression e1, Expression e2){
+        return new Disjunctor(e1, e2);
     }
 }
